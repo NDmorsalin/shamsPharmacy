@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pharmacy Home</title>
+    <!-- font awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+        integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous" />
+
+    <!-- css  -->
+    <link rel="stylesheet" href="../css/style.css" />
+</head>
+
+<body>
+    <div class="container container--login">
+        <div class="logo">
+            <img src="../img/logo_pharmacy.png" alt="logo" class="logo-img" />
+        </div>
+
+        <form action="" class="login_form">
+            <div class="box">
+                <label for="email" id="email-lable">Email Address</label>
+                <div class="input--box">
+                    <span class="input--icon"><i class="fas fa-envelope"></i></span>
+                    <input type="email" name="email" id="email" placeholder="example@gmail.com" />
+
+                    <!--  <p class="error">Lorem ipsum dolor sit amet.</p> -->
+                </div>
+            </div>
+            <div class="box">
+                <label for="email" id="email-lable">Email Address</label>
+                <div class="input--box">
+                    <span class="input--icon"><i class="fas fa-lock"></i></span>
+                    <input type="password" name="password" id="password" placeholder="*******" />
+                    <span class="eye_icon"><i class="far fa-eye"></i></span>
+                </div>
+                <!-- <p class="error">Lorem ipsum dolor sit amet.</p> -->
+            </div>
+
+            <input type="submit" value="Login" id="submit" class="submit">
+        </form>
+
+        <div class="bottom_link">
+            <a href="signup" class="signup--page"> Signup </a>
+
+            <a href="forget" class="forget--page"> Forget Password </a>
+        </div>
+    </div>
+
+    <script src="../js/script.js"></script>
+</body>
+
+</html>

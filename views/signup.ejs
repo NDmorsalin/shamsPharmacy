@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pharmacy Home</title>
+    <!-- font awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+        integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous" />
+
+    <!-- css  -->
+    <link rel="stylesheet" href="../css/style.css" />
+</head>
+
+<body>
+    <div class="container container--login">
+        <form enctype="multipart/form-data" method="POST" class="signup_form">
+            <div class="box box-signup">
+                <label for="email" id="email-lable">Email Address</label>
+                <div class="input--box">
+                    <span class="input--icon"><i class="fas fa-envelope"></i></span>
+                    <input type="email" name="email" id="email" placeholder="example@gmail.com" />
+
+                    <p class="error error-email"></p>
+                </div>
+            </div>
+            <div class="box box-signup">
+                <label for="name" id="name-lable">Your Name</label>
+                <div class="input--box">
+                    <span class="input--icon"><i class="fas fa-user"></i></span>
+                    <input type="text" name="name" id="name" placeholder="Your name" />
+
+                    <p class="error error-name"></p>
+                </div>
+            </div>
+            <div class="box box-signup">
+                <label for="phone" id="phone-lable">Your Phone</label>
+                <div class="input--box">
+                    <span class="input--icon"><i class="fas fa-phone"></i></span>
+                    <input type="text" name="phone" id="phone" placeholder="01612-345678" />
+                    <p class="error error-phone"></p>
+                </div>
+            </div>
+            <div class="box box-signup">
+                <label for="pic" id="pic-lable">Enter your picture</label>
+                <div class="input--box">
+                    <span class="input--icon"><i class="fas fa-camera"></i></span>
+                    <input type="file" name="avatar" id="avatar" />
+
+                    <p class="error error-avatar"></p>
+                </div>
+            </div>
+            <div class="box box-signup">
+                <label for="password" id="password-lable">Password</label>
+                <div class="input--box">
+                    <span class="input--icon"><i class="fas fa-lock"></i></span><input type="password" name="password"
+                        id="password" placeholder="*******" /><span class="eye_icon"><i class="far fa-eye"></i></span>
+                </div>
+                <p class="error error-password"></p>
+            </div>
+
+            <input type="submit" value="Signup" id="submit" class="submit">
+        </form>
+
+        <div class="bottom_link bottom_link--signup">
+            <a href="login" class="login--page"> Login </a>
+        </div>
+    </div>
+
+    <script>
+        const eyeIcon = document.querySelector('.eye_icon');
+        eyeIcon.addEventListener('click', function () {
+            //eyeIcon.children[0].classList.toggle('fa-eye-slash');
+            // eyeIcon.parentElement.children[1].type = "text"
+            if (eyeIcon.children[0].classList.toggle('fa-eye-slash')) {
+                eyeIcon.parentElement.children[1].type = "text"
+            } else {
+                eyeIcon.parentElement.children[1].type = "password"
+            };
+        })
+    </script>
+
+    <!-- back end connection -->
+    <script>
+        const signupForm = document.querySelector('.signup_form');
+
+        signupForm.addEventListener('submit', async (event) => {
+
+            event.preventDefault();
+            const formData = new FormData(signupForm);
+
+            const request = await fetch('/signup', {
+                method: 'POST',
+                body: formData
+            });
+            
+            const response = await request.json()
+            document.querySelectorAll(`.error`).forEach((err) => {
+                err.textContent = '';
+            })
+
+            if (response.errors) {
+                console.log(response.errors);
+                for (const err in response.errors) {
+                    document.querySelector(`.error-${err}`).textContent = response.errors[`${err}`].msg
+                }
+            } else {
+                location = '/'
+            }
+        })
+    </script>
+    <script src="../js/script.js"></script>
+</body>
+
+</html>

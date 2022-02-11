@@ -1,0 +1,402 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 97vh;
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  width: 100%;
+  max-width: 380px;
+  background: #f3f8fe;
+  height: 100%;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  overflow: auto;
+  position: relative;
+}
+
+.container--home {
+  padding: 3rem 0;
+  overflow: auto;
+  position: absolute;
+  display: none;
+  width: 100%;
+  z-index: 1;
+  top: 120%;
+}
+.container--home.active {
+  top: 0;
+  display: block;
+}
+
+.allDrug {
+  background-color: green;
+}
+
+.header,
+footer {
+  background-color: #f3f8fe;
+  box-shadow: 0px 15px 19px rgba(124, 172, 241, 0.24),
+    0px 10px 11px rgba(223, 236, 255, 0.25);
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  height: 3rem;
+  width: 100%;
+  max-width: 380px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.header input,
+footer input {
+  border: none;
+  background-color: #3b3e40;
+  border-radius: 2rem;
+  padding: 0.3rem 0.5rem;
+  width: 50%;
+}
+.header input:focus,
+footer input:focus {
+  outline: none;
+}
+
+footer {
+  top: unset;
+  bottom: 0;
+  box-shadow: unset;
+  background-color: #7fb4e0;
+}
+
+.footer_container {
+  display: flex;
+  align-items: center;
+  width: 360px;
+  text-align: center;
+}
+.footer_container .footer_items {
+  width: 90px;
+  height: 3rem;
+  position: relative;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.footer_container .footer_items.active .icon {
+  transform: translateY(-1.8rem);
+}
+.footer_container .footer_items.active .text {
+  transform: translateY(0);
+  opacity: 1;
+}
+.footer_container .footer_items:nth-child(1).active ~ .indicator {
+  transform: translateX(calc(90px * 0));
+}
+.footer_container .footer_items:nth-child(2).active ~ .indicator {
+  transform: translateX(calc(90px * 1));
+}
+.footer_container .footer_items:nth-child(3).active ~ .indicator {
+  transform: translateX(calc(90px * 2));
+}
+.footer_container .footer_items:nth-child(4).active ~ .indicator {
+  transform: translateX(calc(90px * 3));
+}
+.footer_container .footer_items .icon {
+  line-height: 3.2rem;
+  position: relative;
+  font-size: 1.5rem;
+  transition: 0.5s;
+}
+.footer_container .text {
+  display: inline-block;
+  background-color: #3e4685;
+  border-radius: 1rem;
+  padding: 0.1rem 0.4rem;
+  font-weight: 600;
+  color: #fff;
+  position: absolute;
+  transition: 0.5s;
+  opacity: 0;
+  transform: translateY(2rem);
+}
+
+.indicator {
+  position: absolute;
+  width: 90px;
+  height: 90px;
+  background-color: #7fb4e0;
+  border-radius: 50%;
+  top: -30px;
+  z-index: -1;
+  transition: 0.5s;
+}
+.indicator::before {
+  content: "";
+  position: absolute;
+  width: 2rem;
+  height: 2rem;
+  background-color: #00800000;
+  border-radius: 50%;
+  top: -2px;
+  left: -24px;
+  box-shadow: 18px 24px #7fb4e0;
+}
+.indicator::after {
+  content: "";
+  position: absolute;
+  width: 2rem;
+  height: 2rem;
+  background-color: #00800000;
+  border-radius: 50%;
+  top: -2px;
+  right: -24px;
+  box-shadow: -18px 24px #7fb4e0;
+}
+
+.logo h1 {
+  margin: 0;
+}
+
+.avatar {
+  width: 2rem;
+  height: 2rem;
+  background-color: red;
+  border-radius: 50%;
+}
+
+.container--login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column;
+}
+
+.logo-img {
+  width: 8rem;
+  height: 8rem;
+}
+
+.box {
+  background-color: #fff;
+  box-shadow: 0px 15px 19px rgba(124, 172, 241, 0.24),
+    0px 10px 11px rgba(223, 236, 255, 0.25);
+  border-radius: 19px;
+  padding: 0.7rem 1.5rem;
+  margin-bottom: 1.5rem;
+}
+.box-signup {
+  width: 80%;
+  margin: 1.5rem auto;
+}
+.box-w {
+  width: 70%;
+  margin: auto;
+  margin-top: 1.5rem;
+}
+.box-w h3 {
+  margin: 0;
+}
+
+.box-shadow,
+.drug_input {
+  box-shadow: 6px -6px 8px rgba(124, 172, 241, 0.25),
+    -6px 0px 8px rgba(124, 172, 241, 0.25),
+    0px 15px 19px rgba(124, 172, 241, 0.24),
+    0px 10px 11px rgba(223, 236, 255, 0.25);
+  padding: 0.5rem 0.8rem;
+}
+
+.box_bottom {
+  display: flex;
+  justify-content: space-between;
+}
+.box_bottom .amount,
+.box_bottom .price {
+  width: 4rem;
+  border: 2px solid #3e4685;
+  border-radius: 5px;
+  font-size: 1.1rem;
+  padding: 0.2rem 0.5rem;
+  -moz-appearance: textfield;
+  appearance: textfield;
+  margin: 0;
+}
+.box_bottom .amount:focus,
+.box_bottom .price:focus {
+  outline: none;
+}
+.box_bottom .price {
+  width: 2.5rem;
+}
+.box_bottom .submit {
+  width: auto;
+  padding: 0.3rem 0.8rem;
+  font-size: 1.1rem;
+}
+
+.input--box #password {
+  background: #fff;
+}
+.input--box{
+  display: flex;
+  flex-flow: row wrap;
+}
+.input--box input {
+  border: none;
+  padding: 3px 5px;
+  background-color: #fff;
+}
+.input--box input:focus {
+  border: none;
+  outline: none;
+  background: #fff;
+}
+
+.submit {
+  width: 100%;
+  border: none;
+  background: #3e4685;
+  border-radius: 44px;
+  padding: 0.5rem;
+  font-size: 1.5rem;
+  color: #fff;
+}
+
+.bottom_link {
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+}
+.bottom_link a {
+  text-decoration: none;
+  color: #3e4685;
+}
+.bottom_link a:hover {
+  text-decoration: underline;
+}
+
+.bottom_link--signup {
+  justify-content: center;
+}
+
+.error {
+  color: red;
+  margin: 0;
+}
+
+.eye_icon {
+  cursor: pointer;
+}
+
+.sell__title {
+  text-align: center;
+}
+
+.tk {
+  font-size: 2rem;
+}
+
+.tk--totalInvest {
+  color: #3e4685;
+}
+
+.tk--totalDue {
+  color: #ca4128;
+}
+
+#myChart {
+  width: 60%;
+  height: 300px;
+}
+
+.drug_tile {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.drug_tile * {
+  margin: 0;
+}
+
+.gen_name,
+.due_phone {
+  font-weight: 500;
+}
+
+.company_name {
+  color: #3b3e40;
+  font-size: 14px;
+  margin: 0;
+}
+
+.amount_container,
+.price_container {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.eachDrugBtn {
+  margin-top: 2rem;
+}
+
+.drug_input {
+  border: none !important;
+}
+
+.drug_update {
+  background: #3b3e40;
+}
+
+.due_phone {
+  letter-spacing: 3px;
+  margin: 1rem 0 !important;
+}
+
+.history {
+  margin: 1rem 0;
+}
+
+.table_responsive {
+  overflow-x: auto;
+  text-align: center;
+  margin: 1rem 0;
+}
+.table_responsive table {
+  margin: auto;
+  border: none;
+  width: 100%;
+  border-collapse: collapse;
+}
+.table_responsive table td,
+.table_responsive table th {
+  padding: 0.5rem 1rem;
+  white-space: wrap;
+}
+.table_responsive table th {
+  white-space: nowrap;
+  border-bottom: 1px solid #3e4685;
+}
+.table_responsive table tr {
+  border-bottom: 1px solid #3b3e40;
+}
+
+.history ~ .history_container {
+  height: 0px;
+  overflow: hidden;
+  transition: 0.5s;
+}
+.history.show ~ .history_container {
+  height: auto;
+}
+
+/*# sourceMappingURL=style.css.map */

@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pharmacy Home</title>
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+        integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous" />
+
+    <!-- css  -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="header">
+            <div class="logo">
+                <h1>Shams</h1>
+            </div>
+            <input type="text" class="search" id="search">
+            <div class="avatar"></div>
+        </div>
+        <!-- home page -->
+        <div class="active container--home home">
+
+            <div class="box box-w">
+                <h3 class="sell__title">
+                    Enter your Paid sell
+                </h3>
+                <form class="paid__sell__form">
+                    <div class="box box-shadow">
+                        <div class="input--box">
+                            <!-- <input type="text" name="paidDrugName" id="paidDrugName" placeholder="Drug name" /> -->
+                            <input list="allDrugsName" placeholder="Drug name" name="paidDrugName" id="paidDrugName">
+                            <datalist id="allDrugsName">
+                            </datalist>
+                            <!--  <p class="error">Lorem ipsum dolor sit amet.</p> -->
+                        </div>
+                    </div>
+                    <div class="box_bottom">
+                        <input type="number" class="amount" placeholder="Amount" id="paidDrugAmount">
+
+                        <input type="number" class="price" id="paidPricePerPice" placeholder="price" step=".001">
+                        <input type="submit" value="submit" class="submit">
+                    </div>
+                </form>
+            </div>
+
+            <div class="box box-w">
+                <h3 class="sell__title sell__title-unpaid">
+                    Enter your unpaid sell
+                </h3>
+                <form class="unpaid__sell__form">
+                    <div class="box box-shadow">
+                        <div class="input--box">
+                            <!-- <input type="text" name="paidDrugName" id="paidDrugName" placeholder="Drug name" /> -->
+                            <input list="allDrugsName" placeholder="Drug name" name="paidDrugName" id="unpaidDrugName">
+                            <datalist id="allDrugsName">
+                            </datalist>
+                            <!--  <p class="error">Lorem ipsum dolor sit amet.</p> -->
+                        </div>
+                    </div>
+                    <div class="box box-shadow">
+                        <div class="input--box">
+                            <input name="unpaidBuyerName" id="unpaidBuyerName" type="text"
+                                placeholder="To Whom Did You Sell">
+                            <!--  <p class="error">Lorem ipsum dolor sit amet.</p> -->
+                        </div>
+                    </div>
+                    <div class="box box-shadow">
+                        <div class="input--box">
+                            <input id="unpaidBuyerPhone" name="unpaidBuyerPhone" type="tel" placeholder="Phone Number">
+                            <!--  <p class="error">Lorem ipsum dolor sit amet.</p> -->
+                        </div>
+                    </div> 
+                    <div class="box box-shadow">
+                        <div class="input--box">
+                            <input id="paidTkAmount" name="paidTkAmount" type="number" placeholder="Now Paid">
+                            <!--  <p class="error">Lorem ipsum dolor sit amet.</p> -->
+                        </div>
+                    </div>
+                    <div class="box_bottom">
+                        <input id="unpaidDrugAmount" name="unpaidDrugAmount" type="number" class="amount"
+                            placeholder="Amount">
+                        <input id="unpaidPricePerPice" name="unpaidPricePerPice" type="number" class="price"
+                            placeholder="price">
+                        <input type="submit" value="submit" class="submit">
+                    </div>
+                </form>
+            </div>
+
+            <div class="box box-w">
+                <h3> Total invest <span class="tk tk--totalInvest" id="totalInvest"> 20000</span></h3>
+            </div>
+            <div class="box box-w">
+                <h3> Total Due <span class="tk tk--totalDue" id="totalDue"> 20000</span></h3>
+            </div>
+            <canvas id="myChart"></canvas>
+        </div>
+        <!-- show all Drug -->
+        <div class="container--home drug">
+
+
+        </div>
+        <!-- add drug page -->
+        <div class="container--home add">
+
+            <form method="POST" id="addNewDrugForm">
+                <div class="box box-w">
+
+                    <div class="input--box">
+                        <span class="input--icon"><i class="fas fa-file-signature"></i></span>
+                        <input required type="text" name="brandName" id="brandName" placeholder="Brand name" />
+                        <!--  <p class="error">Lorem ipsum dolor sit amet.</p> -->
+                    </div>
+                </div>
+                <div class="box box-w">
+
+                    <div class="input--box">
+                        <span class="input--icon"><i class="fas fa-users"></i></span>
+                        <input type="text" name="groupName" id="groupName" placeholder="Group Name" />
+
+                        <!--  <p class="error">Lorem ipsum dolor sit amet.</p> -->
+                    </div>
+                </div>
+                <div class="box box-w">
+
+                    <div class="input--box">
+                        <span class="input--icon"><i class="fas fa-building"></i></span>
+                        <input type="text" name="companyName" id="companyName" placeholder="Company name" />
+                        <!--  <p class="error">Lorem ipsum dolor sit amet.</p> -->
+                    </div>
+                </div>
+
+                <div class="box box-w">
+
+                    <div class="input--box">
+                        <span class="input--icon"><i class="fas fa-battery-half"></i></span>
+                        <input type="text" name="power" id="power" placeholder="power in mg" />
+
+                        <!--  <p class="error">Lorem ipsum dolor sit amet.</p> -->
+                    </div>
+                </div>
+                <div class="box box-w">
+
+                    <div class="input--box">
+                        <span class="input--icon"><i class="fas fa-keyboard"></i></span>
+                        <input type="text" name="typeDrug" id="typeDrug" placeholder="Type of Drug" />
+
+                        <!--  <p class="error">Lorem ipsum dolor sit amet.</p> -->
+                    </div>
+                </div>
+                <div class="box box-w">
+
+                    <div class="input--box">
+                        <span class="input--icon"><i class="fas fa-balance-scale-right"></i></span>
+                        <input required type="number" name="amountDrug" id="amountDrug" placeholder="Amount of Drug" />
+
+                        <!--  <p class="error">Lorem ipsum dolor sit amet.</p> -->
+                    </div>
+                </div>
+                <div class="box box-w">
+
+                    <div class="input--box">
+                        <span class="input--icon"><i class="fas fa-money-bill-alt"></i></span>
+                        <input step="0.001" required type="number" name="pricePerPice" id="pricePerPice"
+                            placeholder="Price per pice " />
+
+                        <!--  <p class="error">Lorem ipsum dolor sit amet.</p> -->
+                    </div>
+                </div>
+                <div class=" box-w">
+                    <input type="submit" value="Add drug" id="submit" class="submit">
+                </div>
+
+            </form>
+        </div>
+        <!-- due page -->
+        <div class="container--home due">
+            <div class="box box-w">
+                <div class="drug_tile">
+                    <h2 class="due_name">
+                        Dena dar
+                    </h2>
+                    <h2 class="due_amount error">12334</h2>
+                </div>
+
+                <h3 class="due_phone">01611111111</h3>
+                <form action="" class="dueForme">
+                    <div class="box_bottom">
+                        <input type="number" class="amount" placeholder="Stock">
+
+                        <input type="submit" value="submit" id="due_submit" class="submit">
+
+                    </div>
+                </form>
+                <button onclick="show(this)" id="history" class="history submit">History</button>
+                <div class="history_container">
+                    <div class="table_responsive">
+                        <table class="due_table">
+                            <caption> Buying History </caption>
+                            <thead>
+                                <tr>
+                                    <th> Drug Name</th>
+                                    <th> Date </th>
+                                    <th> Due </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td> Napa , OmapNapa , OmapNapa , OmapNapa , Omap </td>
+                                    <td> 2 Jan 22</td>
+                                    <td> 200</td>
+                                </tr>
+                                <tr>
+                                    <td> Napa , OmapNapa , OmapNapa , OmapNapa , Omap </td>
+                                    <td> 2 Jan 22</td>
+                                    <td> 200</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="table_responsive">
+                        <table class="paid_table">
+                            <caption> Paid History </caption>
+                            <thead>
+                                <tr>
+                                    <th> Date </th>
+                                    <th> Paid </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td> 2 Jan 22</td>
+                                    <td> 200</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="box box-w">
+                <div class="drug_tile">
+                    <h2 class="due_name">
+                        Dena dar
+                    </h2>
+                    <h2 class="due_amount error">12334</h2>
+                </div>
+
+                <h3 class="due_phone">01611111111</h3>
+                <form action="" class="dueForme">
+                    <div class="box_bottom">
+                        <input type="number" class="amount" placeholder="Stock">
+
+                        <input type="submit" value="submit" id="due_submit" class="submit">
+
+                    </div>
+                </form>
+                <button onclick="show(this)" id="history" class="history submit">History</button>
+                <div class="history_container">
+                    <div class="table_responsive">
+                        <table class="due_table">
+                            <caption> Buying History </caption>
+                            <thead>
+                                <tr>
+                                    <th> Drug Name</th>
+                                    <th> Date </th>
+                                    <th> Due </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td> Napa , OmapNapa , OmapNapa , OmapNapa , Omap </td>
+                                    <td> 2 Jan 22</td>
+                                    <td> 200</td>
+                                </tr>
+                                <tr>
+                                    <td> Napa , OmapNapa , OmapNapa , OmapNapa , Omap </td>
+                                    <td> 2 Jan 22</td>
+                                    <td> 200</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="table_responsive">
+                        <table class="paid_table">
+                            <caption> Paid History </caption>
+                            <thead>
+                                <tr>
+                                    <th> Date </th>
+                                    <th> Paid </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td> 2 Jan 22</td>
+                                    <td> 200</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="box box-w">
+                <div class="drug_tile">
+                    <h2 class="due_name">
+                        Dena dar
+                    </h2>
+                    <h2 class="due_amount error">12334</h2>
+                </div>
+
+                <h3 class="due_phone">01611111111</h3>
+                <form action="" class="dueForme">
+                    <div class="box_bottom">
+                        <input type="number" class="amount" placeholder="Stock">
+
+                        <input type="submit" value="submit" id="due_submit" class="submit">
+
+                    </div>
+                </form>
+                <button onclick="show(this)" id="history" class="history submit">History</button>
+                <div class="history_container">
+                    <div class="table_responsive">
+                        <table class="due_table">
+                            <caption> Buying History </caption>
+                            <thead>
+                                <tr>
+                                    <th> Drug Name</th>
+                                    <th> Date </th>
+                                    <th> Due </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td> Napa , OmapNapa , OmapNapa , OmapNapa , Omap </td>
+                                    <td> 2 Jan 22</td>
+                                    <td> 200</td>
+                                </tr>
+                                <tr>
+                                    <td> Napa , OmapNapa , OmapNapa , OmapNapa , Omap </td>
+                                    <td> 2 Jan 22</td>
+                                    <td> 200</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="table_responsive">
+                        <table class="paid_table">
+                            <caption> Paid History </caption>
+                            <thead>
+                                <tr>
+                                    <th> Date </th>
+                                    <th> Paid </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td> 2 Jan 22</td>
+                                    <td> 200</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <div class="footer_container">
+                <div class="footer_items home active">
+                    <div class="icon"><i class="fas fa-home"></i></div>
+                    <span class="text">Home</span>
+                </div>
+                <div class="footer_items drug">
+                    <div class="icon"><i class="fas fa-list-ol"></i></div>
+                    <span class="text">All Drug</span>
+                </div>
+                <div class="footer_items add">
+                    <div class="icon"><i class="fas fa-plus"></i></div>
+                    <span class="text">Add Drug</span>
+                </div>
+                <div class="footer_items due">
+                    <div class="icon"><i class="fas fa-hand-holding-usd"></i></div>
+                    <span class="text">Due</span>
+                </div>
+
+                <div class="indicator"></div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.0/dist/chart.min.js"></script>
+    <script src="js/script.js"></script>
+    <!-- chart -->
+    <script>
+        const ctx = document.getElementById('myChart');
+
+        const labels = ['Sat', 'Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri'];
+        const data = {
+            labels: labels,
+            datasets: [{
+                label: 'My First dataset',
+                backgroundColor: 'rgb(255, 99, 132)',
+                borderColor: 'rgb(255, 99, 132)',
+                data: [3, 10, 5, 2, 20, 30],
+            }, {
+                label: 'My First dataset',
+                backgroundColor: 'rgb(205, 9, 102)',
+                borderColor: 'rgb(255, 99, 132)',
+                data: [10, 1, 5, 20, 25, 35, 5, 9],
+            }]
+        };
+
+        const config = {
+            type: 'bar',
+            data: data,
+            options: {}
+        };
+        const myChart = new Chart(ctx,
+            config
+        );
+
+    </script>
+    <!-- menu bar -->
+    <script>
+        const list = document.querySelectorAll('.footer_items');
+        const containerHome = document.querySelectorAll('.container--home');
+        let cal;
+        function active() {
+
+            list.forEach((item) => {
+                item.classList.remove('active');
+                this.classList.add('active');
+                cal = this.classList.contains('active') ? this : false;
+            })
+
+            containerHome.forEach(page => {
+                page.classList.remove('active')
+                page.style.display = 'none'
+                if (page.classList.contains('home') && cal.classList.contains('home')) {
+                    page.classList.add('active');
+                    page.style.display = 'block';
+                    location = '/'
+                } else if (page.classList.contains('add') && cal.classList.contains('add')) {
+                    page.classList.add('active');
+                    page.style.display = 'block';
+                } else if (page.classList.contains('drug') && cal.classList.contains('drug')) {
+                    page.classList.add('active');
+                    page.style.display = 'block';
+                    showAllDrug()
+                } else if (page.classList.contains('due') && cal.classList.contains('due')) {
+                    page.classList.add('active');
+                    page.style.display = 'block';
+                }
+            })
+        }
+        list.forEach((item) => {
+            item.addEventListener('click', active)
+        })
+
+
+    </script>
+
+    <!-- container -->
+
+    <script>
+
+        function toggleType(btn) {
+            const eachDrugForm = btn.parentElement.parentElement.parentElement;
+            const drug_input = btn.parentElement.parentElement.parentElement.querySelectorAll(`.eachDrugForm input[type='number']`);
+            drug_input.forEach((input) => {
+                input.classList.remove('drug_input');
+                btn.classList.remove('drug_update');
+                input.disabled = false;
+            })
+            btn.value = 'submit';
+            setTimeout(() => {
+                btn.type = 'submit';
+                eachDrugForm.addEventListener('submit', function (e) {
+                    e.preventDefault();
+                    updateEachDrug(this, btn)
+                })
+
+            }, 1);
+        }
+
+    </script>
+
+    <!-- *****home connect with backend***** -->
+    <!-- paid sell -->
+    <script>
+
+        const allDrugsName = document.querySelector('#allDrugsName');
+        const paidDrugName = document.querySelector('#paidDrugName');
+        const paidPricePerPice =
+            document.querySelector('#paidPricePerPice');
+        const paidDrugAmount =
+            document.querySelector('#paidDrugAmount');
+            
+// get drug names
+// todo this function is duplicate
+    async function getDrugName() {
+        paidDrugName.value = '';
+        paidPricePerPice.value = '';
+        paidDrugAmount.value = '';
+
+        const request = await fetch('/paidSell', {
+            method: 'GET'
+        })
+        const response = await request.json()
+
+        response.forEach((drugName) => {
+            const opt = `<option value="${drugName}">`;
+
+            allDrugsName.insertAdjacentHTML('beforeend', opt)
+        })
+
+        setTimeout(() => {
+            paidDrugName.addEventListener('change', async function () {
+                const request = await fetch(`/price/${paidDrugName.value}`, {
+                    method: 'GET'
+                })
+                const response = await request.json()
+                if (!response.errors) {
+                    paidPricePerPice.value = response.pricePerPice
+                } else {
+                    paidPricePerPice.value = '';
+                }
+            })
+
+        }, 300)
+    }
+
+        getDrugName()
+
+
+        // Paid sell
+        const paidSellForm = document.querySelector('.paid__sell__form')
+
+        async function paidSell(e) {
+            e.preventDefault()
+
+            const request = await fetch('/paidSell', {
+                method: 'POST',
+                body: JSON.stringify({
+                    amountDrug: parseInt(paidDrugAmount.value),
+                    brandName: paidDrugName.value,
+                    pricePerPice: parseFloat(paidPricePerPice.value),
+                    date: `${new Date().getDate()}-${new Date().getMonth()}-${new Date().getFullYear()}`
+                }),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            const response = await request.json()
+
+            if (response) {
+                paidDrugName.value = ''
+                paidPricePerPice.value = '',
+                    paidDrugAmount.value = ''
+            }
+
+            // todo this is duplicate
+            const totalInvest = document.querySelector('#totalInvest')
+            const totalDue = document.querySelector('#totalDue')
+            const capital = await fetch('/capital', {
+                method: 'GET'
+            });
+            const responseCapital = await capital.json()
+            totalInvest.textContent = responseCapital.invest
+            totalDue.textContent = responseCapital.due
+            // todo this is duplicate
+            
+        }
+        paidSellForm.addEventListener('submit', paidSell
+        )
+    </script>
+
+    <!-- unpaid sell -->
+    <script>
+        const unpaidSellForm = document.querySelector('.unpaid__sell__form');
+
+        const unpaidDrugName = document.querySelector('#unpaidDrugName');
+        
+        const unpaidBuyerName = document.querySelector('#unpaidBuyerName');
+        const unpaidBuyerPhone = document.querySelector('#unpaidBuyerPhone');
+        const unpaidDrugAmount = document.querySelector('#unpaidDrugAmount');
+        const unpaidPricePerPice = document.querySelector('#unpaidPricePerPice');
+        const paidTkAmount = document.querySelector('#paidTkAmount');
+
+        async function unPaidSell(e) {
+            e.preventDefault()
+
+            const request = await fetch('/unpaidSell', {
+                method: 'POST',
+                body: JSON.stringify({
+                    unpaidDrugAmount: parseInt(unpaidDrugAmount.value),
+                    unpaidBuyerName: unpaidBuyerName.value,
+                    unpaidDrugName: unpaidDrugName.value,
+                    unpaidBuyerPhone: unpaidBuyerPhone.value,
+                    unpaidPricePerPice: parseFloat(unpaidPricePerPice.value),
+                    paidTkAmount: parseFloat(paidTkAmount.value),
+
+                    date: `${new Date().getDate()}-${new Date().getMonth()}-${new Date().getFullYear()}`
+                }),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            const response = await request.json()
+
+            // todo this is duplicate
+            const totalInvest = document.querySelector('#totalInvest')
+            const totalDue = document.querySelector('#totalDue')
+            const capital = await fetch('/capital', {
+                method: 'GET'
+            });
+            const responseCapital = await capital.json()
+            totalInvest.textContent = responseCapital.invest
+            totalDue.textContent = responseCapital.due
+            // todo this is duplicate
+        }
+
+        unpaidSellForm.addEventListener('submit', unPaidSell)
+        // todo this function is duplicate
+            async function getUnpaidDrugName() {
+                unpaidDrugName.value = '';
+                unpaidPricePerPice.value = '';
+                unpaidDrugAmount.value = '';
+
+                const request = await fetch('/paidSell', {
+                    method: 'GET'
+                })
+                const response = await request.json()
+
+                response.forEach((drugName) => {
+                    const opt = `<option value="${drugName}">`;
+
+                    allDrugsName.insertAdjacentHTML('beforeend', opt)
+                })
+
+                setTimeout(() => {
+                    
+                    unpaidDrugName.addEventListener('change', async function () {
+                        const request = await fetch(`/price/${unpaidDrugName.value}`, {
+                            method: 'GET'
+                        })
+                        const response = await request.json()
+                        if (!response.errors) {
+                            unpaidPricePerPice.value = response.pricePerPice
+                        } else {
+                            unpaidPricePerPice.value = '';
+                        }
+                    })
+                }, 300)
+            }
+        getUnpaidDrugName()
+    </script>
+
+    <!-- due -->
+    <script>
+        function show(btn) {
+            btn.classList.toggle('show');
+        }
+    </script>
+
+
+    <!-- add drug connect with backend -->
+    <script>
+
+        const addNewDrugForm = document.querySelector('#addNewDrugForm');
+        function inputValue(inputId) {
+            
+            return document.querySelector(`#${inputId}`).value
+        }
+        addNewDrugForm.addEventListener('submit', async function (event) {
+            event.preventDefault();
+
+            const drugFormData = {
+                brandName: document.querySelector(`#brandName`).value,
+                groupName: document.querySelector(`#groupName`).value,
+                companyName: document.querySelector(`#companyName`).value,
+                power: document.querySelector(`#power`).value,
+                typeDrug: document.querySelector(`#typeDrug`).value,
+                amountDrug: parseInt(document.querySelector(`#amountDrug`).value),
+                pricePerPice: parseFloat(document.querySelector(`#pricePerPice`).value),
+
+            }
+            drugFormData.totalPrice = drugFormData.amountDrug * drugFormData.pricePerPice;
+
+            const request = await fetch('/add', {
+                method: 'POST',
+                body: JSON.stringify(drugFormData),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+
+            const response = await request.json()
+
+            if (response.errors) {
+                
+            } else {
+                document.querySelector(`#brandName`).value = '';
+                document.querySelector(`#amountDrug`).value = '';
+                document.querySelector(`#pricePerPice`).value = '';
+            }
+
+        })
+    </script>
+
+    <!-- show all Drug -->
+
+    <script>
+        async function showAllDrug() {
+            const drugContainer = document.querySelector('.drug');
+
+            const request = await fetch('/show', {
+                method: 'GET'
+            });
+            const response = await request.json();
+
+            response.forEach((eachDrug) => {
+                const drgTag = `
+            <div class="box box-w">
+                <div class="drug_tile">
+                    <h2 class="drug_name">
+                        ${eachDrug.brandName}
+                    </h2>
+                    <p class="drug_power">${eachDrug.power}/ ${eachDrug.typeDrug}</p>
+                </div>
+                <p class="company_name">${eachDrug.companyName}</p>
+
+                <h3 class="gen_name">${eachDrug.groupName}</h3>
+                <form data-drugid=${eachDrug._id} class="eachDrugForm">
+                    <div class="box_bottom">
+                        <div class="amount_container">
+                            <h3 class="amount_text">${eachDrug.amountDrug}</h3>
+                            <input disabled="true" type="number" class="amount drug_input" placeholder="Stock">
+                        </div>
+                        <div class="price_container">
+                            <h3 class="price_text">${eachDrug.pricePerPice} </h3>
+                            <input disabled="true" type="number" step=any class="price drug_input" placeholder="price">
+                        </div>
+                        <div class="btn_container">
+                            <input type="button" value="update" id="eachDrugBtn" onclick="toggleType(this)"
+                                class="submit drug_update  eachDrugBtn">
+                        </div>
+                    </div>
+                </form>
+            </div>`;
+
+                drugContainer.insertAdjacentHTML("beforeend", drgTag)
+            })
+
+        }
+
+
+        async function updateEachDrug(eachDrugForm, btn) {
+            // eachDrugForm.dataset.drugid
+            const amountDrug = eachDrugForm.querySelector('.amount');
+            const amountDrugText = eachDrugForm.querySelector('.amount_text');
+
+            const pricePerPice = eachDrugForm.querySelector('.price');
+            const pricePerPiceText = eachDrugForm.querySelector('.price_text');
+
+            const id = eachDrugForm.dataset.drugid;
+
+            const request = await fetch(`/show/${id}`, {
+                method: 'PUT',
+                body: JSON.stringify({
+
+                    amountDrug: parseFloat(amountDrug.value || 0) + parseFloat(amountDrugText.textContent),
+
+                    pricePerPice: parseFloat(pricePerPice.value) || parseFloat(pricePerPiceText.textContent)
+
+                }),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+
+            const response = await request.json();
+
+            
+            if (response.errors) {
+                
+            } else {
+                btn.value = 'update';
+                btn.type = 'button'
+                btn.classList.add('drug_update');
+
+                amountDrug.classList.add('drug_input');
+                pricePerPice.classList.add('drug_input');
+
+                amountDrug.disabled = true;
+                pricePerPice.disabled = true;
+
+                amountDrug.value = '';
+                pricePerPice.value = '';
+
+                amountDrugText.textContent = response.amountDrug;
+                pricePerPiceText.textContent = response.pricePerPice;
+            }
+        }
+    </script>
+
+
+<!-- capital show -->
+<script>
+    const totalInvest = document.querySelector('#totalInvest')
+    const totalDue = document.querySelector('#totalDue')
+    async function capitalShow(){
+        const request = await fetch('/capital',{
+            method:'GET'
+        });
+
+        const response = await request.json()
+        
+        totalInvest.textContent = response.invest
+        totalDue.textContent = response.due
+    }
+    capitalShow()
+
+</script>
+</body>
+
+</html>

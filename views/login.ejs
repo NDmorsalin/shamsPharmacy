@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pharmacy Home</title>
+    <!-- font awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+        integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous" />
+
+    <!-- css  -->
+    <link rel="stylesheet" href="../css/style.css" />
+</head>
+
+<body>
+    <div class="container container--login">
+        <div class="logo">
+            <img src="../img/logo_pharmacy.png" alt="logo" class="logo-img" />
+        </div>
+
+        <form enctype="multipart/form-data" class="login_form" method="POST">
+            <div class="box box-signup">
+                <label for="email" id="email-lable">Email Or Phone Number</label>
+                <div class="input--box">
+                    <span class="input--icon"><i class="fas fa-envelope"></i> Or <i class="fas fa-phone"></i></span>
+                    <input type="email" name="email" id="email" placeholder="Email Or Phone Number" />
+
+                    <p class="error error-email"></p>
+                </div>
+            </div>
+            <div class="box box-signup">
+                <label for="email" id="email-lable">Password</label>
+                <div class="input--box">
+                    <span class="input--icon"><i class="fas fa-lock"></i></span>
+                    <input type="password" name="password" id="password" placeholder="*******" />
+                    <span class="eye_icon"><i class="far fa-eye"></i></span>
+                </div>
+                <p class="error error-password"></p>
+            </div>
+
+            <input type="submit" value="Login" id="submit" class="submit">
+        </form>
+
+        <div class="bottom_link">
+            <a href="signup" class="signup--page"> Signup </a>
+
+            <a href="forget" class="forget--page"> Forget Password </a>
+        </div>
+    </div>
+    <script src="../js/script.js"></script>
+    <script>
+        const eyeIcon = document.querySelector('.eye_icon');
+        eyeIcon.addEventListener('click', function () {
+            //eyeIcon.children[0].classList.toggle('fa-eye-slash');
+            // eyeIcon.parentElement.children[1].type = "text"
+            if (eyeIcon.children[0].classList.toggle('fa-eye-slash')) {
+                eyeIcon.parentElement.children[1].type = "text"
+            } else {
+                eyeIcon.parentElement.children[1].type = "password"
+            };
+        })
+    </script>
+
+    <!-- login -->
+    <script>
+        const loginForm = document.querySelector('.login_form');
+        loginForm.addEventListener('submit', async function (event) {
+            event.preventDefault();
+            const email = document.querySelector('#email').value
+            const password = document.querySelector('#password').value
+
+            const request = await fetch('/login', {
+                method: 'POST',
+                body: JSON.stringify({
+                    email, password
+                }),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            const response = await request.json()
+
+            document.querySelectorAll(`.error`).forEach((err) => {
+                err.textContent = '';
+            })
+
+            if (response.errors) {
+                for (const err in response.errors) {
+                    document.querySelector(`.error-${err}`).textContent = response.errors[`${err}`].msg
+                }
+            } else {
+                console.log(response);
+                location = '/'
+            }
+        })
+    </script>
+</body>
+
+</html>
